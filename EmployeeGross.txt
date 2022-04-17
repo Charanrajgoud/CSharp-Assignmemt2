@@ -1,0 +1,119 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace ConsoleApp4
+{
+	class Employee
+	{
+		private int empNo;
+		private String empName;
+		private double salary;
+
+		private double HRA;
+		private double TDS;
+		private double DA;
+		private double PF;
+		private double TA;
+
+		private double netSalary;
+		private double grossSalary;
+
+		public int getEmpNo()
+		{
+			return empNo;
+		}
+		public void setEmpNo(int empNo)
+		{
+			this.empNo = empNo;
+		}
+		public String getEmpName()
+		{
+			return empName;
+		}
+		public void setEmpName(String empName)
+		{
+			this.empName = empName;
+		}
+		public double getSalary()
+		{
+			return salary;
+		}
+		public void setSalary(double salary)
+		{
+			this.salary = salary;
+		}
+
+
+		public double calculateGrossSalary()
+		{
+			
+
+				try
+				{
+					if (salary < 5000)
+					{
+						grossSalary = salary + ((salary / 100) * 10) + ((salary / 100) * 5) + ((salary / 100) * 15);
+					}
+					else if (salary < 10000)
+					{
+						grossSalary = salary + ((salary / 100) * 15) + ((salary / 100) * 10) + ((salary / 100) * 20);
+					}
+					else if (salary < 15000)
+					{
+						grossSalary = salary + ((salary / 100) * 20) + ((salary / 100) * 15) + ((salary / 100) * 25);
+					}
+					else if (salary < 20000)
+					{
+						grossSalary = salary + ((salary / 100) * 25) + ((salary / 100) * 20) + ((salary / 100) * 30);
+					}
+					else if (salary >= 20000)
+					{
+						grossSalary = salary + ((salary / 100) * 30) + ((salary / 100) * 25) + ((salary / 100) * 35);
+					}
+				}
+				catch (ArithmeticException)
+				{
+					// TODO: handle exception
+					System.Console.WriteLine("Arithmetic Exception Occured");
+
+				}
+				catch (Exception)
+				{
+					System.Console.WriteLine("Exception occured");
+
+					// TODO: handle exception
+				}
+
+				return grossSalary;
+			
+		}
+
+		public void calculateSalary()
+		{
+			
+
+				try
+				{
+					PF = (grossSalary / 100) * 10;
+					TDS = (grossSalary / 100) * 18;
+					netSalary = grossSalary - (PF + TDS);
+				}
+				catch (ArithmeticException)
+				{
+					// TODO: handle exception
+					System.Console.WriteLine("Arithmetic Exception Occured");
+
+				}
+				catch (Exception)
+				{
+					System.Console.WriteLine("Exception occured");
+
+					// TODO: handle exception
+				}
+			
+		}
+	}
+}
